@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Order Complete</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/new/sidebar.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        header nav {
+            background: url(../static/images/bg_4.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 11vh;
+        }
+
+        .img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img img {
+            width: 350px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .footer {
+            background: black;
+            text-align: center;
+        }
+
+        .footer p {
+            display: inline;
+            color: #fff;
+            font-weight: bold;
+            line-height: 5px;
+            font-size: 15px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: grey;
+            transition: 0.6s;
+            transition-property: color;
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .footer i {
+            padding: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <input type="checkbox" id="check" checked="checked">
+    <!--Header area start-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="ftco-navbar">
+            <label for="check">
+                <i class="fas fa-bars" id="sidebar_btn"></i>
+            </label>
+            <div class="left_area">
+                <h3><a class="navbar-brand" href="/">
+                        <span class="flaticon-pizza-1 mr-1" style="color: #f1c40f;"></span>Pepperonizza<br>
+                        <small style="color: #1DC4E7; font-size: 10px; margin-left: 55px;">D e l i c i o u s</small>
+                    </a></h3>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a href="/logout/" class="logout_btn">Logout</a></li>
+    
+                {% endif %}
+            </ul>
+    
+        </nav>
+    </header>
+    
+    <!--Header area End-->
+    <!--Sidebar area start-->
+    <div class="sidebar">
+        <div class="profile_info">
+            {% if user.is_authenticated %}
+            <img src="{{customer.profile_pic.url}}" class="profile_image" alt="">
+            <h4>Hi, {{user.first_name}}</h4>
+            {% endif %}
+        </div>
+        <a href="/" title="Home"><i class="fas fa-desktop"></i><span>Home</span></a>
+        <a href="/menu/" title="Menu"><i class="fas fa-pizza-slice"></i><span>Our Menu</span></a>
+        <a href="/myorders/" title="My Orders"><i class="fas fa-receipt"></i><span>My Orders</span></a>
+        <a href="/blog/" title="Blog"><i class="fab fa-blogger"></i><span>Blog</span></a>
+        <a href="/about/" title="About"><i class="fas fa-info-circle"></i><span>About</span></a>
+        <a href="/contact/" title="Feedback"><i class="fas fa-comment-alt"></i><span>Feedback</span></a>
+        <a href="/terms/" title="Terms"><i class="fas fa-file-alt"></i><span>Terms & Conditions</span></a>
+        <a href="/faq/" title="FAQ"><i class="fas fa-comment-dots"></i><span>FAQ</span></a>
+        {% if user.is_authenticated %}
+        <a href="/logout/" title="Log out"><i class="fas fa-power-off"></i><span>Logout</span></a>
+        {% endif %}
+    </div>
+    <!--Sidebar area End-->
+
+    <div class="full_view">
+        <div class="jumbotron text-center">
+
+            <h1 class="display-3">Thank You!</h1>
+            <p class="lead">For Your order, {{user.first_name}}</p>
+            <br />
+            <p><small>Your Order #{{order.id}}: {{order.item.name}} is successful.</small> <em>We're on it!!</em></p>
+            <div class="img">
+                <img src="{% static 'image/confirmed.svg' %}" alt="">
+            </div>
+            
+            <p class="lead"><strong>Please check your email</strong> for your order confirmation.</p>
+            <hr>
+            <br />
+
+            {% if order.item.category == "Pizza" %}
+            <p class="lead">Hurray!! You got a gift.<a href="#" onclick="showItem()">Click here</a> to claim.</p><br />
+            <div class="hide" id="hide1">
+                <p class="lead">Please Enjoy your Meal with this refreshing song.</p>
+                <h4>Hero Too</h4>
+                <audio preload="auto" ontimeupdate="updateTime()" controls="controls" style="width: 300px; height: 32px">
+                    <source src="{% static 'musics/16 Hero too.mp3' %}" type="audio/mpeg">
+                </audio>
+            </div>
+
+            {% elif order.item.category == "Burger" %}
+            <p class="lead">Hurray!! You got a gift.<a href="#" onclick="show()">Click here</a> to claim.</p><br />
+            <div class="hide" id="hide2">
+                <p class="lead">Please Enjoy your Meal with this refreshing song.</p>
+                <h4>Catch The Moment</h4>
+                <audio preload="auto" ontimeupdate="updateTime()" controls="controls" style="width: 300px; height: 32px">
+                    <source src="{% static 'musics/01 Catch The Moment (From _Sword Art Online_ Ordinal Scale_).mp3' %}"
+                        type="audio/mpeg">
+                </audio>
+            </div>
+
+            {% else %}
+            <div>
+                <h3 style="text-align: center">Bon appétit!</h3>
+            </div>
+            {% endif %}
+
+            <hr>
+            <br />
+
+            <p>
+                Please give your <a href="/contact/">Feedback</a>.
+            </p>
+            <p class="lead">
+                <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+            </p>
+        </div>
+
+        <!--Footer area start-->
+        <footer class="footer">
+            <p> <br>
+                <i class="fab fa-pinterest-p" style="color: #f1c40f; font-size: 30px;"></i>Pepperonizza v 0.1b <br>
+                Follow us <br>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-twitter"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-facebook-f"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-instagram"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="https://github.com/Z-crete19/Online-Pizza-Ordering" target="_blank"><i class="fab fa-github"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-discord"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-youtube"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-telegram-plane"
+                        style="color: white; font-size: 20px;"></i></a> <br>
+                <a href="/privacy/" target="_blank">Privacy Policy</a> | <a href="/terms/" target="_blank">Terms &
+                    Conditions</a> <br>
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="#"
+                    target="_blank">Pepperonizza.com</a>
+            </p>
+        </footer>
+        <!--Footer area end-->
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        function showItem() {
+            var x = document.getElementById("hide1");
+
+            x.style.display = "block";
+        }
+        function show() {
+            var x = document.getElementById("hide2");
+
+            x.style.display = "block";
+        }
+
+        $(window).scroll(function () {
+                if ($(this).scrollTop()) {
+                    $('#ftco-navbar').addClass("fixed-top");
+                }
+                else {
+                    $('#ftco-navbar').removeClass("fixed-top");
+                }
+        }); 
+
+    </script>
+</body>
+</html>
+
+
+

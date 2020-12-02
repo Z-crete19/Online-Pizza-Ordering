@@ -1,0 +1,444 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.dcodes.net/2/payment_icons/dc_payment_icons.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="{% static 'css/new/sidebar.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            /*padding: 8px;*/
+            background-size: cover;
+            background-position: center;
+        }
+
+        header nav {
+            background: url(/static/images/bg_4.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 11vh;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin: 0px;
+        }
+
+        .col-25 {
+            -ms-flex: 25%;
+            flex: 25%;
+        }
+
+        .col-50 {
+            -ms-flex: 50%;
+            flex: 50%;
+        }
+
+        .col-75 {
+            -ms-flex: 50%;
+            flex: 50%;
+        }
+
+        .col-25,
+        .col-50,
+        .col-75 {
+            padding: 0 5px;
+        }
+
+        .container {
+            background-color: #f2f2f2; /*Change*/
+            padding: 5px 20px 15px 20px;
+            border: 1px solid lightgrey; /*Change*/
+            border-radius: 3px;
+            position: relative;
+            margin: 20px;
+            margin-bottom: 100px;
+            -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+            -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+            box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+        }
+
+        input {
+            width: 50%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc; 
+            border-radius: 3px;
+            outline: none;
+        }
+
+        input::placeholder {
+            font-weight: bold;
+            color: #aaa;
+        }
+
+        label {
+            font-weight: 200;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+
+
+        .icon-container {
+            margin-bottom: 20px;
+            padding: 7px 0;
+            font-size: 24px;
+        }
+
+        .btn {
+            background-color: #ff4757; /*Change*/
+            color: white; /*Change*/
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 50%;
+            border-radius: 3px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 700;
+            transition: 0.5s;
+            -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 10);
+            -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 10);
+            box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 10);
+        }
+
+        .btn:hover {
+            background-color: #c0392b; /*Change*/
+        }
+
+        hr {
+        border: 1px solid lightgrey;
+        }
+
+        .footer {
+            background: black;
+            text-align: center;
+        }
+
+        .footer p {
+            display: inline;
+            color: #fff;
+            font-weight: bold;
+            line-height: 5px;
+            font-size: 15px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: grey;
+            transition: 0.6s;
+            transition-property: color;
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .footer i {
+            padding: 5px;
+        }
+
+        /*#form3 {
+            display: none;
+        }/*
+
+        /*Responsive*/
+        @media (max-width: 800px) {
+            .row {
+                flex-direction: column-reverse;
+            }
+            .col-25 {
+                margin-bottom: 20px;
+            }
+            .btn {
+                width: 90%;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <input type="checkbox" id="check" checked="checked">
+    <!--Header area start-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="ftco-navbar">
+            <label for="check">
+                <i class="fas fa-bars" id="sidebar_btn"></i>
+            </label>
+            <div class="left_area">
+                <h3><a class="navbar-brand" href="/">
+                        <span class="flaticon-pizza-1 mr-1" style="color: #f1c40f;"></span>Pepperonizza<br>
+                        <small style="color: #1DC4E7; font-size: 10px; margin-left: 55px;">D e l i c i o u s</small>
+                    </a></h3>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a href="/logout/" class="logout_btn">Logout</a></li>
+    
+                {% endif %}
+            </ul>
+    
+        </nav>
+    </header>
+    
+    <!--Header area End-->
+    <!--Sidebar area start-->
+    <div class="sidebar">
+        <div class="profile_info">
+            {% if user.is_authenticated %}
+            <img src="{{customer.profile_pic.url}}" class="profile_image" alt="">
+            <h4>Hi, {{user.first_name}}</h4>
+            {% endif %}
+        </div>
+        <a href="/" title="Home"><i class="fas fa-desktop"></i><span>Home</span></a>
+        <a href="/menu/" title="Menu"><i class="fas fa-pizza-slice"></i><span>Our Menu</span></a>
+        <a href="/myorders/" title="My Orders"><i class="fas fa-receipt"></i><span>My Orders</span></a>
+        <a href="/blog/" title="Blog"><i class="fab fa-blogger"></i><span>Blog</span></a>
+        <a href="/about/" title="About"><i class="fas fa-info-circle"></i><span>About</span></a>
+        <a href="/contact/" title="Feedback"><i class="fas fa-comment-alt"></i><span>Feedback</span></a>
+        <a href="/terms/" title="Terms"><i class="fas fa-file-alt"></i><span>Terms & Conditions</span></a>
+        <a href="/faq/" title="FAQ"><i class="fas fa-comment-dots"></i><span>FAQ</span></a>
+        {% if user.is_authenticated %}
+        <a href="/logout/" title="Log out"><i class="fas fa-power-off"></i><span>Logout</span></a>
+        {% endif %}
+    </div>
+    <!--Sidebar area End-->
+
+<div class="full_view">
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                <!--<form id="form2" name="form2" action="/payment/" method="POST" onsubmit="return(validate())">-->
+
+                    <div class="row">
+                        <div class="col-50">
+                            <h3 style="font-weight: 700;">Checkout</h3><br />
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked="checked">
+                                <label class="custom-control-label" for="customRadio1">Credit or Debit Card</label>
+                            </div>
+                            <!--<div class="custom-control custom-radio">
+                                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadio2">Paypal</label>
+                            </div>-->
+                            <!--Multiple Payment options-->
+                            <br>
+                            <form id="form2" name="form2" action="/payment/" method="POST" onsubmit="return(validate())">
+                                {% csrf_token %}
+                                        <label for="fname" >Accepted Cards</label>
+                                        <div class="icon-container">
+                                            
+                                            <span class="dc_payment_icons_bevel_48 dc_visa02_bevel" title="Visa"></span>
+                                            <span class="dc_payment_icons_bevel_48 dc_mastercard_bevel" title="Mastercard"></span>
+                                            <span class="dc_payment_icons_bevel_48 dc_americanexpress_bevel" title="American Express"></span>
+                                            <span class="dc_payment_icons_bevel_48 dc_visaelectron_bevel" title="Visa Electron"></span>
+                                            <span class="dc_payment_icons_bevel_48 dc_maestro_bevel" title="Maestro"></span>
+                                        </div>
+                                        <label for="l1">Name on Card</label>
+                                        <input type="text" name="owner" placeholder="Card Holder Name" id="l1" required>
+                                        <label for="cardnumber">Card Number</label>
+                                        <input type="text" name="cardnumber" placeholder="xxxx-xxxx-xxxx-xxxx" id="cardnumber" onblur="masking(this.value,this,event);" onkeypress="masking(this.value,this,event);" required>
+                                        <label for="expmonth">Expiry Month</label>
+                                    
+                                        <!--<div class="custom-select" style="width: 200px;">-->
+                                            <select class="custom-select" id="expmonth" name="month" style="width: 200px; font-weight: 200;" required>
+                                                <option selected>MM</option>
+                                                <option value="01">January</option>
+                                                <option value="02">February</option>
+                                                <option value="03">March</option>
+                                                <option value="04">April</option>
+                                                <option value="05">May</option>
+                                                <option value="06">June</option>
+                                                <option value="07">July</option>
+                                                <option value="08">August</option>
+                                                <option value="09">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                            </select>
+                                        <!--</div>-->
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-50">
+                                                <label for="expyear">Expiry Year</label>
+                                                
+                                                <!--<div class="custom-select" style="width: 200px;">-->
+                                                    <select class="custom-select" id="expyear" name="year" style="width: 200px; font-weight: 200;" required>
+                                                        <option selected>YYYY</option>
+                                                        <option value="2040">2040</option>
+                                                        <option value="2039">2039</option>
+                                                        <option value="2038">2038</option>
+                                                        <option value="2037">2037</option>
+                                                        <option value="2036">2036</option>
+                                                        <option value="2035">2035</option>
+                                                        <option value="2034">2034</option>
+                                                        <option value="2033">2033</option>
+                                                        <option value="2032">2032</option>
+                                                        <option value="2031">2031</option>
+                                                        <option value="2030">2030</option>
+                                                        <option value="2029">2029</option>
+                                                        <option value="2028">2028</option>
+                                                        <option value="2027">2027</option>
+                                                        <option value="2026">2026</option>
+                                                        <option value="2025">2025</option>
+                                                        <option value="2024">2024</option>
+                                                        <option value="2023">2023</option>
+                                                        <option value="2022">2022</option>
+                                                        <option value="2021">2021</option>
+                                                        <option value="2020">2020</option>
+                                                    </select>
+                                                <!--</div>-->
+                                            </div>
+                                            <div class="col-50">
+                                                <label for="cvv">CVV</label>
+                                                <input type="password" name="cvv" id="cvv" placeholder="Security Code" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <input type="hidden" name="orderid" value="{{order.id}}" />
+                                <p style="text-align: justify; font-size: 15px;"><small>By completing your purchase you agree to these <a href="/terms/" target="_blank"><b> Terms of Service.</b></a></small></p>
+                                <input type="submit" class="btn" value="Pay Now &#8377;{{order.item.total_price}}">
+                                <i class="fas fa-lock" style="color: #dcdde1; float: right; font-size: 25px;"><small style="font-size: 12px;">Secure<p>Connection</p></small></i>
+                            </form>
+
+                                <!--<form id="form3" action="#" method="POST">
+                                    <label for="l1">Name on Card</label>
+                                    <input type="text" name="owner" placeholder="Card Holder Name" id="l1" required>
+                                    <label for="cardnumber">Card Number</label>
+                                    <input type="text" name="cardnumber" placeholder="xxxx-xxxx-xxxx-xxxx" id="cardnumber"
+                                        onblur="masking(this.value,this,event);" onkeypress="masking(this.value,this,event);" required>
+                                    
+                                </form>-->
+                            
+            
+            </div>
+        </div>
+
+        <div class="col-25">
+            <div class="container"><br />
+                    <h4 style="text-align: center;">Cart &nbsp;&nbsp;
+                        <span class="price" style="color: black;">
+                            <i class="fa fa-shopping-cart"></i>
+                            <b>1</b>
+                        </span>
+                    </h4>
+                    <center><hr width="50%"></center>
+                    <h3 style="font-weight: 700; font-size: 25px;">Order Details</h3>
+                    <br />
+                    <p style="font-weight: 300;"><img style="width: 80px; height: 80px;" src="{{order.item.img.url}}" alt="">&nbsp;&nbsp;&nbsp;<b>{{order.item.name}}</b><span class="price" style="float: right;">&#8377;{{order.item.price}}</span></p>
+                    <hr>
+                    <h3 style="font-weight: 700; font-size: 20px; text-align:justify;">Summary</h3>
+                    <p style="font-weight: 300; font-size: 17px;">Original Price: <span class="price" style="float: right;">&#8377;{{order.item.price}}</span></p>
+                    <p style="font-weight: 300; font-size: 17px;">Quantity: <span class="price" style="float: right;">{{order.item.quantity}}</span></p>
+                    <hr>
+                    <p style="font-weight: 600; font-size: 16px;"><b>Total Price: <span class="price" style="float: right;">&#8377;{{order.item.total_price}}</b></span></p>
+                    
+            </div>
+        </div>
+    </div>
+
+
+    <!--Footer area start-->
+    <footer class="footer">
+        <p> <br>
+            <i class="fab fa-pinterest-p" style="color: #f1c40f; font-size: 30px;"></i>Pepperonizza v 0.1b <br>
+            Follow us <br>
+            <a href="http://www.example.com/" target="_blank"><i class="fab fa-twitter"
+                    style="color: white; font-size: 20px;"></i></a>
+            <a href="http://www.example.com/" target="_blank"><i class="fab fa-facebook-f"
+                    style="color: white; font-size: 20px;"></i></a>
+            <a href="http://www.example.com/" target="_blank"><i class="fab fa-instagram"
+                    style="color: white; font-size: 20px;"></i></a>
+            <a href="https://github.com/Z-crete19/Online-Pizza-Ordering" target="_blank"><i class="fab fa-github"
+                    style="color: white; font-size: 20px;"></i></a>
+            <a href="http://www.example.com/" target="_blank"><i class="fab fa-discord"
+                    style="color: white; font-size: 20px;"></i></a>
+            <a href="http://www.example.com/" target="_blank"><i class="fab fa-youtube"
+                    style="color: white; font-size: 20px;"></i></a>
+            <a href="http://www.example.com/" target="_blank"><i class="fab fa-telegram-plane"
+                    style="color: white; font-size: 20px;"></i></a> <br>
+            <a href="/privacy/" target="_blank">Privacy Policy</a> | <a href="/terms/" target="_blank">Terms &
+                Conditions</a> <br>
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="#"
+                target="_blank">Pepperonizza.com</a>
+        </p>
+    </footer>
+    <!--Footer area end-->
+</div>
+
+<script src="{% static 'minfile/quantumalert.js' %}"></script>
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<script>
+    function masking(input, text, e) {
+        if (input.length == 4 || input.length == 9 || input.length == 14) {
+            if (e.keycode != 8)
+                input = input + '-';
+        }
+        text.value = input;
+    }
+
+    function validate() {
+        if (document.form2.cardnumber.value.length != 19 || document.form2.cardnumber.value.length > 19) {
+            /*alert("Sorry, not a valid Card Number. Please try again ");*/
+            Qual.errord('Sorry, not a valid Card Number. Please try again', 'Pepperonizza');
+            document.form2.cardnumber.focus();
+            return false;
+        }
+        if (document.form2.cvv.value.length > 3) {
+            /*alert("Doesn't match with your card ");*/
+            Qual.infodb("Doesn't match with your card", "Pepperonizza");
+            document.form2.cvv.focus();
+            return false;
+        }
+        return true;
+    }
+
+    $(window).scroll(function () {
+            if ($(this).scrollTop()) {
+                $('#ftco-navbar').addClass("fixed-top");
+            }
+            else {
+                $('#ftco-navbar').removeClass("fixed-top");
+            }
+    });
+
+</script>
+
+
+</body>
+</html>

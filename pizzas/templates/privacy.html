@@ -1,0 +1,279 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Privacy Policy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/new/sidebar.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+
+    <style>
+
+        header nav {
+            background: url(/static/images/bg_4.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 11vh;
+        }
+
+        .footer {
+            background: black;
+            text-align: center;
+        }
+
+        .footer p {
+            display: inline;
+            color: #fff;
+            font-weight: bold;
+            line-height: 5px;
+            font-size: 15px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: grey;
+            transition: 0.6s;
+            transition-property: color;
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .footer i {
+            padding: 5px;
+        }
+
+        .slider {
+            background: url(/static/images/bg_3.jpg) no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 90vh;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 260px;
+            color: #fff;
+        }
+
+        .description {
+            width: 85%;
+            margin: 50px auto;
+
+        }
+
+        .description p {
+            line-height: 28px;
+            text-align: justify;
+        }
+
+        .description h2 {
+            color: green;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="check" checked="checked">
+    <!--Header area start-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="ftco-navbar">
+            <label for="check">
+                <i class="fas fa-bars" id="sidebar_btn"></i>
+            </label>
+            <div class="left_area">
+                <h3><a class="navbar-brand" href="/">
+                        <span class="flaticon-pizza-1 mr-1" style="color: #f1c40f;"></span>Pepperonizza<br>
+                        <small style="color: #1DC4E7; font-size: 10px; margin-left: 55px;">D e l i c i o u s</small>
+                    </a></h3>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="/logout/" class="logout_btn">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a href="/accounts/login/" class="logout_btn">Sign In</a></li>
+                {% endif %}
+            </ul>
+    
+        </nav>
+    </header>
+    
+    <!--Header area End-->
+    <!--Sidebar area start-->
+    <div class="sidebar">
+        <div class="profile_info">
+            {% if user.is_authenticated %}
+            <img src="{{customer.profile_pic.url}}" class="profile_image" alt="">
+            <h4>Hi, {{user.first_name}}</h4>
+            {% endif %}
+        </div>
+        <a href="/" title="Home"><i class="fas fa-desktop"></i><span>Home</span></a>
+        <a href="/menu/" title="Menu"><i class="fas fa-pizza-slice"></i><span>Our Menu</span></a>
+        <a href="/myorders/" title="My Orders"><i class="fas fa-receipt"></i><span>My Orders</span></a>
+        <a href="/blog/" title="Blog"><i class="fab fa-blogger"></i><span>Blog</span></a>
+        <a href="/about/" title="About"><i class="fas fa-info-circle"></i><span>About</span></a>
+        <a href="/contact/" title="Feedback"><i class="fas fa-comment-alt"></i><span>Feedback</span></a>
+        <a href="/terms/" title="Terms"><i class="fas fa-file-alt"></i><span>Terms & Conditions</span></a>
+        <a href="/faq/" title="FAQ"><i class="fas fa-comment-dots"></i><span>FAQ</span></a>
+        {% if user.is_authenticated %}
+            <a href="/logout/" title="Log out"><i class="fas fa-power-off"></i><span>Logout</span></a>
+        {% else %}
+            <a href="/accounts/login/" title="Login"><i class="fas fa-sign-in-alt"></i><span>Sign In</span></a>
+        {% endif %}
+    </div>
+    <!--Sidebar area End-->
+
+    <div class="full_view">
+        <div class="slider">
+            <h1>Privacy Policy</h1>
+        </div>
+        <div class="description">
+            <p>
+                <h2>WELCOME AT PEPPERONIZZA WE RECOGNIZE THAT PRIVACY IS IMPORTANT!!</h2>
+                This Privacy Policy is designed to tell you about our practices
+                regarding collection, use, and disclosure of information that you may provide via this site. Please be sure to read this
+                entire Privacy Policy before using or submitting information to this site. 
+            </p>
+            <p>
+                <h2>CONSENT</h2>
+                By using this site, you agree to the terms of this Privacy Policy. Whenever you submit information via this site, you
+                consent to the collection, use and disclosure of the information in accordance with this Privacy Policy.
+            </p>
+            <p>
+                <h2>INFORMATION COLLECTED</h2>
+                In general, you can visit this Web site without telling us who you are or revealing any information about yourself. Our
+                web servers collect the domain names, not the e-mail addresses, of visitors.<br>
+                
+                Pepperonizza may collect personal information from you including your first and last name, address, telephone and mobile
+                number(s), email address, credit card details and any other information, when you knowingly provide us with this
+                information. This will generally occur when you either:
+                <ul>
+                    <li>Visit Online ordering site to place order.</li>
+                    <li>Enter into a competition or promotion.</li>
+                    <li>Participate in a survey.</li>
+                    <li>Subscribe to our mailing list.</li>
+                    <li>Apply for a job.</li>
+                    <li>Submit website feedback</li>
+                </ul>
+                Where ever Pepperonizza collects personal information about you from someone else, Pepperonizza or the franchisee will take
+                reasonable steps to advise you.
+            </p>
+            <p>
+                <h2>USE AND DISCLOSURE</h2>
+                By using this site, you agree to the terms of this Privacy Policy. Whenever you submit information via this site, you
+                consent to the collection, use and disclosure of the information in accordance with this Privacy Policy.<br>
+                
+                Except as otherwise stated, we may use information collected via this site to improve the content of our site, to
+                customize the site to your preferences, to communicate information to you (if you have requested it), and for any other
+                purpose specified.<br>
+                
+                Pepperonizza may use the personal information that you submit to restaurant and process that information in order to provide
+                goods and services. Generally, we may use your personal information in the ways in which you would expect, including but
+                not limited, to any of the following purposes:<br>
+                
+                To process any job application you may submit.<br>
+                
+                To provide you with any restaurant or promotion information you may request.<br>
+                
+                To process any online ordering.<br>
+                
+                To determine the number of visitors to our websites and conduct reviews of our sites.<br>
+                
+                To fulfill prizes, awards and purchases.<br>
+                
+                To respond to specific requests from visitors.<br>
+                
+                To keep you informed about any changes to our websites.<br>
+                
+                And to now and again send you offers or information on products or services that we consider will be of interest to you.<br>
+                
+                Further information on how we use your personal information when using our Internet ordering system.<br>
+                
+                When using the Pepperonizza Delicious internet ordering system additional information is collected when you order a pizza
+                online. This information assists in the delivery to your door and to verify your credit card payment. The internet order
+                system also stores information about your order to help you remember and re-order the same menu in future. When
+                concluding your order via the Pepperonizza Delicious internet ordering system, you will be asked if you would like to become a
+                WOW Club member. To not become a member untick the box.
+            </p>
+            <p>
+                <h2>CREDIT CARD DETAILS</h2>
+                Pepperonizza does not store any of your credit card details.
+            </p>
+            <p>
+                <h2>ACCESS, ACCURACY AND SECURITY</h2>
+                Pepperonizza will take reasonable steps to ensure that the personal information collected is accurate, complete and
+                up-to-date. You can access and request correction of any personal information concerning you at any time. You may also
+                request that your personal information be deleted at any time. Any such requests should be made directly by contacting
+                us. Pepperonizza will take reasonable steps to protect personal information from misuse, loss and unauthorized access,
+                modification or disclosure.
+            </p>
+            <p>
+                <h2>CHANGES</h2>
+                If this Privacy Policy is changed, the revised policy will be posted on this site. Please check back periodically, and
+                especially before you provide any personally identifiable information. This Privacy Policy was last updated on Aug 10,
+                2020.
+            </p>
+
+
+        </div>
+
+
+        <!--Footer area start-->
+        <footer class="footer">
+            <p> <br>
+                <i class="fab fa-pinterest-p" style="color: #f1c40f; font-size: 30px;"></i>Pepperonizza v 0.1b <br>
+                Follow us <br>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-twitter"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-facebook-f"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-instagram"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="https://github.com/Z-crete19/Online-Pizza-Ordering" target="_blank"><i class="fab fa-github"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-discord"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-youtube"
+                        style="color: white; font-size: 20px;"></i></a>
+                <a href="http://www.example.com/" target="_blank"><i class="fab fa-telegram-plane"
+                        style="color: white; font-size: 20px;"></i></a> <br>
+                <a href="/privacy/" target="_blank">Privacy Policy</a> | <a href="/terms/" target="_blank">Terms & Conditions</a> <br>
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="#"
+                    target="_blank">Pepperonizza.com</a>
+            </p>
+        </footer>
+        <!--Footer area end-->
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <script type="text/Javascript">
+        $(window).scroll(function(){  
+            if ($(this).scrollTop()) {
+                $('#ftco-navbar').addClass("fixed-top");
+            }
+            else{
+                $('#ftco-navbar').removeClass("fixed-top");
+            } 
+        }); 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!--New-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous" />
+    
+    
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+    
+      .left_area h3 {
+        color: #fff;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 900;
+      }
+    
+      .logout_btn {
+        padding: 5px;
+        background: #19B3D3;
+        text-decoration: none;
+        float: right;
+        margin-top: -20px;
+        margin-right: 40px;
+        border-radius: 2px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        transition: 0.5s;
+        transition-property: background;
+      }
+    
+      .logout_btn:hover {
+        background: #0D9DBB;
+      }
+    
+      .sidebar {
+        background: #2F323A;
+        margin-top: 0px;
+        padding-top: 70px;
+        position: fixed;
+        left: 0;
+        width: 245px;
+        height: 100%;
+        transition: 0.5s;
+        transition-property: left;
+        overflow-y: auto;
+      }
+    
+      .profile_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .sidebar .profile_info .profile_image {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        margin-bottom: 10px;
+      }
+    
+      .sidebar h4 {
+        color: #ccc;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+    
+      .sidebar a {
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 44px;
+        text-decoration: none;
+        padding-left: 40px;
+        box-sizing: border-box;
+        transition: 0.5s;
+        transition-property: background;
+      }
+    
+      .sidebar a:hover {
+        background: #19B3D3;
+      }
+    
+      .sidebar i {
+        padding-right: 10px;
+        transition: 0.5s;
+        transition-property: color;
+      }
+
+      .sidebar i:hover {
+        color: #f1c40f;
+      }
+    
+      label #sidebar_btn {
+        z-index: 1;
+        color: #fff;
+        position: fixed;
+        cursor: pointer;
+        left: 300px;
+        font-size: 20px;
+        margin: 5px 0;
+        transition: 0.5s;
+        transition-property: color;
+      }
+    
+      label #sidebar_btn:hover {
+        color: #19B3D3;
+      }
+    
+      #check:checked~.sidebar {
+        left: -185px;
+      }
+    
+      #check:checked~.sidebar a span {
+        display: none;
+      }
+    
+      #check:checked~.sidebar a {
+        font-size: 20px;
+        line-height: 50px;
+        margin-left: 165px;
+        width: 80px;
+      }
+    
+      .full_view {
+        margin-left: 250px;
+        transition: 0.5s;
+      }
+    
+      #check:checked~.full_view {
+        margin-left: 60px;
+      }
+    
+      #check:checked~.sidebar .profile_info {
+        display: none;
+      }
+    
+      #check {
+        display: none;
+      }
+    
+      /*Responsive View*/
+    
+      @media screen and (max-width: 780px) {
+        .nav-item {
+          display: none;
+        }
+      }
+    </style>
+    <!--End-->
+    
+  </head>
+  <body>
+    
+
+    <input type="checkbox" id="check" checked="checked">
+    <!--Header area start-->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3><a class="navbar-brand" href="/"><span class="flaticon-pizza-1 mr-1"></span>Pepperonizza<br><small style="color: #1DC4E7;">Delicous</small></a></h3>
+      </div>
+      
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item"><a href="/logout/" class="logout_btn">Logout</a></li>
+        {% else %}
+          <li class="nav-item"><a href="/accounts/login/" class="logout_btn">Sign In</a></li>
+        {% endif %}
+      </ul>
+      
+    </nav>
+    
+    <!--Header area End-->
+    <!--Sidebar area start-->
+    <div class="sidebar">
+      <div class="profile_info">
+        {% if user.is_authenticated %}
+          <img src="{{customer.profile_pic.url}}" class="profile_image" alt="">
+          <h4>Hi, {{user.first_name}}</h4>
+        {% endif %}
+      </div>
+      <a href="/" title="Home"><i class="fas fa-desktop"></i><span>Home</span></a>
+      <a href="/menu/" title="Menu"><i class="fas fa-pizza-slice"></i><span>Our Menu</span></a>
+      <a href="/myorders/" title="My Orders"><i class="fas fa-receipt"></i><span>My Orders</span></a>
+      <a href="/blog/" title="Blog"><i class="fab fa-blogger"></i><span>Blog</span></a>
+      <a href="/about/" title="About"><i class="fas fa-info-circle"></i><span>About</span></a>
+      <a href="/contact/" title="Feedback"><i class="fas fa-comment-alt"></i><span>Feedback</span></a>
+      <a href="/terms/" title="Terms"><i class="fas fa-file-alt"></i><span>Terms & Conditions</span></a>
+      <a href="/faq/" title="FAQ"><i class="fas fa-comment-dots"></i><span>FAQ</span></a>
+      {% if user.is_authenticated %}
+      <a href="/logout/" title="Log out"><i class="fas fa-power-off"></i><span>Logout</span></a>
+      {% else %}
+      <a href="/accounts/login/" title="Login"><i class="fas fa-sign-in-alt"></i><span>Sign In</span></a>
+      {% endif %}
+    </div>
+    <!--Sidebar area End-->
+
+<div class="full_view">
+    <section class="home-slider owl-carousel img" style="background-image: url({% static 'images/bg_1.jpg' %});">
+
+      <div class="slider-item" style="background-image: url({% static 'images/bg_3.jpg' %});">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	<h1 class="mb-3 mt-5 bread">Contact Us</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="/">Home</a></span> <span>Contact</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section contact-section">
+      <div class="container mt-5">
+        <div class="row block-9">
+					<div class="col-md-4 contact-info ftco-animate">
+						<div class="row">
+							<div class="col-md-12 mb-4">
+	              <h2 class="h4">Contact Information</h2>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Phone:</span> <a href="#">+ 1235 2355 98</a></p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Email:</span> <a href="mailto:avijitbkshi85@gmail.com">avijitbkshi85@gmail.com</a></p>
+	            </div>
+	            <div class="col-md-12 mb-3">
+	              <p><span>Website:</span> <a href="/">Pepperonizza.com</a></p>
+	            </div>
+						</div>
+					</div>
+					<div class="col-md-1"></div>
+          <div class="col-md-6 ftco-animate">
+
+            <form action="/contact/" class="contact-form" method="POST">
+              {% csrf_token %}
+            	<div class="row">
+            		<div class="col-md-6">
+	                <div class="form-group">
+	                  <input type="text" name="full_name" class="form-control" placeholder="Your Name" required>
+	                </div>
+                </div>
+                <div class="col-md-6">
+	                <div class="form-group">
+	                  <input type="text" name="email" class="form-control" placeholder="Your Email" required>
+	                </div>
+	                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+              </div>
+              <div class="form-group">
+                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="map"></div>
+    
+
+    <footer class="ftco-footer ftco-section img">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">About Us</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="http://www.example.com/" target="_blank"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="http://www.example.com/" target="_blank"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="http://www.example.com/" target="_blank"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://github.com/Z-crete19/Online-Pizza-Ordering" target="_blank"><span><i
+                        class="fab fa-github"></i></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Recent Blog</h2>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({% static 'images/image_1.jpg' %});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({% static 'images/image_2.jpg' %});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-5 mb-md-5">
+             <div class="ftco-footer-widget mb-4 ml-md-4">
+              <h2 class="ftco-heading-2">Services</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Cooked</a></li>
+                <li><a href="#" class="py-2 d-block">Deliver</a></li>
+                <li><a href="#" class="py-2 d-block">Quality Foods</a></li>
+                <li><a href="#" class="py-2 d-block">Mixed</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">avijitbkshi85@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="#" target="_blank">Pepperonizza.com</a>
+  </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+</div>
+  
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+    </svg></div>
+    
+
+<!-- End -->
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+  
+    
+  </body>
+</html>

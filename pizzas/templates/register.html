@@ -1,0 +1,475 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Signup {% endblock %}
+
+{% block style %}
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eae3ee;
+    background-position: center;
+    background-size: cover;
+}
+
+.conatiner {
+    position: absolute;
+    max-width: 800px;
+    height: 500px;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.myRightCtn {
+    position: relative;
+    background-image: linear-gradient(45deg, #809fc9, #251fc9); /*For right box*/
+    border-radius: 25px;
+    height: 100%;
+    padding: 25px;
+    color: rgb(192, 192, 192);
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myLeftCtn {
+    position: relative;
+    background: #fff;
+    border-radius: 25px;
+    height: 100%;
+    padding: 25px;
+    padding-left: 50px;
+}
+
+.myLeftCtn header {
+    color: blueviolet;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.row {
+    height: 100%;
+}
+
+.myCard {
+    position: relative;
+    background: #fff;
+    height: 100%;
+    border-radius: 25px;
+    -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.9);
+}
+
+.myRightCtn header {
+    color: #fff;
+    font-size: 25px;
+}
+
+.box {
+    position: relative;
+    margin: 20px;
+    margin-bottom: 100px;
+}
+
+.myLeftCtn .myInput {
+    width: 230px;
+    border-radius: 25px;
+    padding: 10px;
+    padding-left: 50px;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+}
+
+.myLeftCtn .myInput:focus {
+    outline: none;
+}
+
+/*.myLeftCtn .check_1 {
+    padding: 0.7rem 0;
+    font-size: 1rem;
+    color: grey;
+}*/
+
+.form-group input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+}
+
+.myform {
+    position: relative;
+    margin-top: 50px;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: #f0e1e1;
+    margin-bottom: 10px;
+}
+
+.myLeftCtn .butt {
+    width: 150px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    cursor: pointer;
+    background-color: #5995fd;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    transition: 0.5s;
+    -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 10);
+    -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 10);
+    box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 10);
+}
+
+.myLeftCtn .butt:hover {
+    background: linear-gradient(45deg, #c85bff, #b726ff);/*Button hover*/
+}
+
+.myLeftCtn .butt:focus {
+    outline: none;
+}
+
+.myLeftCtn .fas {
+    position: relative;
+    color: #bb36fd;
+    left: 36px;
+}
+
+/*Neon light */
+
+.neon-light {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #ecf0f1; /*Change*/
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-weight: bold;  
+    font-size: 15px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.neon-light:hover {
+    color: #dff9fb; /*Change*/
+    background: #2196f3; /*Change*/
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3; /*Change*/
+    -webkit-box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3; 
+    -moz-box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3; 
+    transition-delay: 1s;
+}
+
+.neon-light span {
+    position: absolute;
+    display: block;
+}
+
+.neon-light span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #2196f3);
+}
+
+.neon-light:hover span:nth-child(1) {
+    left: 100%;
+    transition: 1s;
+}
+
+.neon-light span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #2196f3);
+}
+
+.neon-light:hover span:nth-child(3) {
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+}
+
+.neon-light span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #2196f3);
+}
+
+.neon-light:hover span:nth-child(2) {
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+
+.neon-light span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #2196f3);
+}
+
+.neon-light:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.75s;
+}
+
+
+/*End*/
+
+/*Social Media*/
+
+.social {
+    display: inline-block;
+    width: 32px;    /*Change*/
+    height: 32px;   /*Change*/
+    background: #f1f1f1;
+    margin: 10px;
+    text-align: center;
+    border-radius: 30%;
+    box-shadow: 0 5px 15px -5px #00000070;
+    color: #3498db; /*Can Change*/
+    overflow: hidden;
+    position: relative;
+}
+
+.social i {
+    line-height: 32px; /*change*/
+    font-size: 15px;
+    transition: .2s linear;
+}
+
+.social:hover i {
+    transform: scale(1.3);
+    color: #f1f1f1;
+}
+
+.social::before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #3498db; /*Change*/
+    transform: rotate(45deg);
+    left: -110%;
+    top: 90%;
+}
+
+.social:hover::before {
+    animation: aaa 0.7s 1;
+    top: -10%;
+    left: -10%;
+}
+
+@keyframes aaa {
+    0%{
+        left: -110%;
+        top: 90%;
+    }50%{
+        left: 10%;
+        top: -30%;
+    }100%{
+        top: -10%;
+        left: -10%;
+    }
+}
+/*End*/
+
+
+
+</style>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+<script>
+    function check()
+    {
+        if(document.form1.phoneno.value.length > 11)
+        {
+            /*alert("The length of Phoneno shouldn't exceed 11 ");*/
+            Qual.errordb("The length of Phoneno shouldn't exceed 11", "Pepperonizza");
+            document.form1.phoneno.focus();
+            return false;
+        }
+        if (document.form1.password1.value.length > 5 && document.form1.password1.value.length < 14)
+        {
+            /*Qual.successdb('Registered Successfully', 'Awesome, Lets get back to Login');*/
+            return true;
+        }
+        else
+        {
+            /*alert("The length must be between 6-14 characters ");*/
+            Qual.warningd('The length must be between 6-14 characters', 'Pepperonizza');
+            document.form1.password1.focus();
+            return false;
+        }     
+        
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong><i class="fa fa-times-circle" style="color: red;"></i> {{message}} </strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="container">
+    <div class="mycard">
+        <div class="row">
+            <!--For Form-->
+            <div class="col-md-6">
+                <div class="myLeftCtn">
+
+                    <form id="form1" name="form1" action="/signup/new_user/" method="POST" class="myForm text-center" enctype="multipart/form-data" onsubmit="return(check())">
+                        {% csrf_token %}
+
+                        <h2 class="title">Sign Up</h2>
+                        <header>Create New Account</header>
+
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input class="myInput" type="text" name="first_name" placeholder="First Name" id="first_name" required>
+                            <!--<div class="inavlid-feedback">Please fill out this field</div>-->
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input class="myInput" type="text" name="last_name" placeholder="Last Name" id="last_name" required>
+                            <!--<div class="inavlid-feedback">Please fill out this field</div>-->
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-user"></i>
+                            <input class="myInput" type="text" name="username" placeholder="Username" id="username" required>
+                            <!--<div class="inavlid-feedback">Please fill out this field</div>-->
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input class="myInput" type="email" name="email" placeholder="E-mail" id="email" required>
+                            <!--<div class="inavlid-feedback">Please fill out this field</div>-->
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-phone"></i>
+                            <input class="myInput" type="text" name="phoneno" placeholder="Phone no" id="phoneno" required>
+                            <!--<div class="inavlid-feedback">Please fill out this field</div>-->
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-user-circle"></i>
+                            <input class="myInput" type="file" name="profile_pic" accept="image/*">
+                            <p style="color: red; font-size: 12px; font-weight: 300;">(* Not Mandatory. Only if you want)</p>
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input class="myInput" type="password" name="password1" placeholder="Password" id="myInput" required>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-lock"></i>
+                            <input class="myInput" type="password" name="password2" placeholder="Confirm Password" id="myInput" required>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1" aria-describedby="invalidCheck3Feedback" checked="checked" required>
+                                    <label class="custom-control-label" for="customCheck1"><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I'm in for emails with exciting discounts and further
+                                            info about the app</small></label>
+                                    <div id="invalidCheck3Feedback" class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="Submit" name="" class="butt" value="Sign up">
+
+                    </form>
+                    <p style="font-size: 10px; text-align: center;">By signing up, you agree to our <a href="/terms/" target="_blank"> Terms of Use </a> and <a href="/privacy/" target="_blank"> Privacy Policy</a>.</p><!--Add links later-->
+                </div>
+            </div>
+            <!--End-->
+            <!--Right panel-->
+            <div class="col-md-6">
+                <div class="myRightCtn">
+
+                    <div class="box">
+                        <!--<div class="middle">-->
+                            <p style="color: #ecf0f1; text-align: center; font-size: 30px">-------Or---------</p>
+                            <p style="color: #ecf0f1; font-weight: 600; text-align: center; font-size: 20px"> Register with </p>
+                            <a class="social" href="http://www.example.com/" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a class="social" href="http://www.example.com/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            <a class="social" href="http://www.example.com/" target="_blank">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a class="social" href="http://www.example.com/" target="_blank">
+                                <i class="fab fa-yahoo"></i>
+                            </a>
+                            <a class="social" href="http://www.example.com/" target="_blank">
+                                <i class="fab fa-apple"></i>
+                            </a>
+                        <!--</div>-->
+
+                        <header>Already have an Account?</header>
+                        <br />
+                        <center>
+                            <a href="/accounts/login/" class="neon-light">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Sign In
+                            </a>
+                        </center>
+                    </div>
+
+                </div>
+            </div>
+            <!--End-->
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
