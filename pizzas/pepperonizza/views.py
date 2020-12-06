@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password
 from django.http import Http404, HttpResponse
 from .forms import ImageUploadForm
 from .filters import OrderFilter, AdminFilter
-from plyer import notification
+
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -49,9 +49,6 @@ def register(request):
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = [user.email, ]
                 send_mail(subject, message, email_from, recipient_list)
-
-                #Notification
-                notification.notify(title='Registered', message='Login Now!', app_name="Pepperonizza", app_icon="static/image/pizza.ico", timeout = 10, toast=True )
                 return redirect('login')
 
         else:
@@ -72,9 +69,6 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-
-            #Notification
-            notification.notify(title='Successfully Logged In', message='Welcome to Pepperonizza Delicious', app_name="Pepperonizza", app_icon="static/image/pizza.ico", timeout = 10, toast=True )
             return redirect("/")
         else:
             messages.info(request, 'Invalid Username or Password!!!')
@@ -86,8 +80,7 @@ def login(request):
 # Logout
 def logout(request):
     auth.logout(request)
-    #Notification
-    notification.notify(title='Successfully Logged Out', message='Come back Again', app_name="Pepperonizza", app_icon="static/image/pizza.ico", timeout = 10, toast=True )
+    
     return redirect('/')
 
 # Homepage
@@ -426,8 +419,6 @@ def success(request):
     recipient_list = [user.email, ]
     send_mail(subject, plain_message, email_from, recipient_list, html_message=html_message)
 
-    #Notification
-    notification.notify(title='Thank You', message='Thanks for using our system. We hope to see you again.', app_name="Pepperonizza", app_icon="static/image/pizza.ico", timeout = 10, toast=True )
     return render(request, "thanks.html", context)
 
 # View Orders
