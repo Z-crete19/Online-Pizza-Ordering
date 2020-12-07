@@ -138,4 +138,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'avijitbkshi85@gmail.com' #sender's email-id 
-EMAIL_HOST_PASSWORD = 'avijitbk' #password associated with above email-id 
+EMAIL_HOST_PASSWORD = 'rozuspyuklfivqci' #password associated with above email-id 
